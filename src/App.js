@@ -1,25 +1,32 @@
 import logo from './logo.svg';
 import './App.css';
-
+import TodoApp from "./Todo/TodoApp";
+import React, {Component} from "react";
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  <TodoApp/>
+      <LoginComponent/>
     </div>
   );
+}
+
+
+class LoginComponent extends Component
+{
+  render(){return(
+      <div>
+
+          UserName:<input type={"text"} name={"username"}/>
+
+          Password: <input type={"text"} name={"password"} />
+
+              <Button className={"LoginButton"} variant="contained" sx={{marginLeft: 2, boxShadow: 5, borderRadius: 5}}>Login</Button>
+
+      </div>
+  )}
 }
 
 export default App;
