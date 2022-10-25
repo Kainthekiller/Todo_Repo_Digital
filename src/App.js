@@ -1,32 +1,50 @@
-import logo from './logo.svg';
 import './App.css';
-import TodoApp from "./Todo/TodoApp";
-import React, {Component} from "react";
-import Stack from '@mui/material/Stack';
+import React, {useEffect, useState} from "react";
 import Button from '@mui/material/Button';
+import axios from "axios";
+import printALLItems from "./Component/PrintALLItems";
+import PrintALLItems from "./Component/PrintALLItems";
+import TodoCreator from "./Component/TodoCreator";
 function App() {
+    const url = "http://localhost:3001/api/items"
+    //Use State
+    const [items, setItems] = useState([])
+
+
+    //Use Effect
+    useEffect(() =>
+    {
+    }, [])
+
+
+    //custom methods
+    //GET
+   async function fetchAllItems()
+    {
+        const response = await
+        axios.get(url);
+        setItems(response.data)
+    }
+    //POST
+    async function postNewItem(data)
+    {
+        await axios.post(url, data)
+        await fetchAllItems();
+    }
+
+
+
+
+
+    //Get ALL ITEMS METHOD
+
   return (
     <div className="App">
-  <TodoApp/>
-      <LoginComponent/>
+        <h1>TODO APPLICATION</h1>
+        <PrintALLItems fetchAllItems={fetchAllItems} items={items} setItems={setItems}></PrintALLItems>
+        <TodoCreator postNewItem={postNewItem}/>
     </div>
   );
-}
-
-
-class LoginComponent extends Component
-{
-  render(){return(
-      <div>
-
-          UserName:<input type={"text"} name={"username"}/>
-
-          Password: <input type={"text"} name={"password"} />
-
-              <Button className={"LoginButton"} variant="contained" sx={{marginLeft: 2, boxShadow: 5, borderRadius: 5}}>Login</Button>
-
-      </div>
-  )}
 }
 
 export default App;
