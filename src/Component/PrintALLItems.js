@@ -20,6 +20,10 @@ function PrintAllItems(props)
             <li>id: {id}</li>
             <li>Content: {content}</li>
             <li>Completed: {completed.toString()}</li>
+                <button  onClick={(e) => props.deleteItem(id)}>Delete Me</button>
+                <br/>
+                <br/>
+                <button sx={{space: 20}} onClick={(e) => props.updateItem(id, {completed: true})}>Mark Completed</button>
             </ol>
             <br/>
             </div>

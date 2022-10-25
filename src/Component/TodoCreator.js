@@ -23,14 +23,7 @@ function TodoCreator(props)
     return (
         <>
             <h1>Todo Creator</h1>
-            <form onSubmit={(e) => {
-                e.preventDefault();
-                const data = {
-                    content: userInput,
-                    completed: false
-                }
-                props.postNewItem(data);
-            }}>
+            <form onSubmit={(e) => {onSubmit(e)}}>
             <input
             placeholder={"Input Content"}
             value={userInput}
